@@ -11,9 +11,8 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Remove Streamlit's default chrome so the embedded study app uses the full page.
 st.markdown(
-    """
+    '''
     <style>
         [data-testid="stHeader"],
         [data-testid="stToolbar"],
@@ -31,15 +30,13 @@ st.markdown(
             border: 0;
         }
     </style>
-    """,
+    ''',
     unsafe_allow_html=True,
 )
 
 html_path = Path(__file__).with_name("study_app.html")
 html_content = html_path.read_text(encoding="utf-8")
 
-# The original HTML contains its own CSS, JavaScript, local progress storage,
-# Daily Review, Mistake Book, dashboard, and import/export functions.
 components.html(
     html_content,
     height=1450,
